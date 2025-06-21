@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
 import { Aboutme } from "../components/Aboutme";
+import { Skills } from "../components/SkillsSection";
 
 export const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -40,6 +41,7 @@ export const Home = () => {
             <main>
             <HeroSection/>
             <Aboutme/>
+            <Skills/>
             </main>
             {/* Footer */}
         </div>
