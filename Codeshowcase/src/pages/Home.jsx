@@ -2,6 +2,7 @@ import { ThemeToggle } from "../components/ThemeToggle";
 import { StarBackground } from "@/components/StarBackground";
 import { CosmicLightBackground } from "../components/CosmixLightBackground";
 import { useState, useEffect } from "react";
+import { Navbar } from "../components/Navbar";
 
 export const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,7 +33,7 @@ export const Home = () => {
             {isDarkMode ? <StarBackground/> : <CosmicLightBackground/>}
             
             {/* Navbar */}
-
+            <Navbar/>
             {/* Main Content */}
             
             {/* Footer */}

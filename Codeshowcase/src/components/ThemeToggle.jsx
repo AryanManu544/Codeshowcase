@@ -46,19 +46,19 @@ export const ThemeToggle = () => {
     };
 
     return (
-        <button
-            onClick={toggleTheme}
-            className={cn(
-                "fixed top-4 right-4 z-[100] p-2 rounded-full transition-all duration-300", // Corrected semicolon, increased z-index just in case
-                "bg-slate-200/60 hover:bg-slate-300/80 dark:bg-slate-700/60 dark:hover:bg-slate-600/80", // Added subtle background for better visibility
-                "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary focus:ring-offset-background" // Improved focus state
-            )}
-            aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
-        >
+       <button
+     onClick={toggleTheme}
+     className={cn(
+         "fixed top-4 right-4 z-[100] p-2 rounded-full transition-all duration-300",
+         "bg-transparent hover:bg-transparent",
+         "focus:outline-none focus:ring-0"
+     )}
+     aria-label={isDarkMode ? "Switch to light theme" : "Switch to dark theme"}
+ >
             {isDarkMode ? (
                 <Sun className="h-5 w-5 text-yellow-400" />
             ) : (
-                <Moon className="h-5 w-5 text-slate-700" /> // Using slate-700 for better contrast on light backgrounds
+                <Moon className="h-5 w-5 text-slate-700" /> 
             )}
         </button>
     );
