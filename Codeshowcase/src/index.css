@@ -9,6 +9,7 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
 
   --color-card: hsl(var(--card));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
   /* Animation Aliases for Tailwind */
   --animate-float: float 6s ease-in-out infinite;
@@ -116,12 +117,12 @@
     0%, 100% {
       opacity: 0.7;
       transform: scale(1);
-      box-shadow: 0 0 10px var(--star-glow-color, #FFFFFF);
+      box-shadow: 0 0 10px var(--star-glow-color, #FFE4B5);
     }
     50% {
       opacity: 1;
       transform: scale(1.2);
-      box-shadow: 0 0 20px var(--star-glow-color, #FFFFFF), 0 0 30px var(--star-glow-color, #FFFFFF);
+      box-shadow: 0 0 20px var(--star-glow-color, #FFE4B5), 0 0 30px var(--star-glow-color, #FFE4B5);
     }
   }
 
@@ -324,13 +325,14 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-  }
+  --background: 32 25% 88%;       
+  --foreground: 25 20% 8%;         
+  --card: 28 30% 85%;              
+  --primary: 45 75% 55%;          
+  --primary-foreground: 25 20% 8%;
+  --border: 35 15% 70%;            
+  --muted-foreground: 25 15% 35%; 
+}
 
   .dark {
     --background: 222 47% 4%;
@@ -339,6 +341,7 @@
     --primary: 250 65% 65%;
     --primary-foreground: 213 31% 91%;
     --border: 217 33% 20%;
+    --muted-foreground: 217 20% 60%;
   }
 
   * {
@@ -393,15 +396,15 @@
   /* Enhanced styling for StarBackground.jsx elements */
   .star {
     @apply absolute rounded-full;
-    background: #FFFFFF;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    background: #FFE4B5;
+    box-shadow: 0 0 10px 2px rgba(255, 228, 181, 0.4);
     transition: all 0.3s ease;
   }
 
   .meteor {
     @apply absolute rounded-full;
-    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 40%, #87CEEB 70%, transparent 100%);
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(90deg, #FFE4B5 0%, #FFE4B5 40%, #F4E4BC 70%, transparent 100%);
+    box-shadow: 0 0 10px 5px rgba(255, 228, 181, 0.3);
   }
 
   /* Enhanced meteor styling */
