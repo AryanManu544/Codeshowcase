@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 export const StarBackground = () => {
     const [stars, setStars] = useState([]);
     const [meteors, setMeteors] = useState([]);
+    const [moon, setMoon] = useState(null);
 
     useEffect(() => {
         generateStars();
         generateMeteors();
+        generateMoon();
 
         const handleResize = () => {
             generateStars();
@@ -73,6 +75,20 @@ export const StarBackground = () => {
         setMeteors(newMeteors);
     };
 
+    const generateMoon = () => {
+        setMoon({
+            id: 'main-moon',
+            top: '15%',
+            left: 'calc(100% - 100px - 3vw)',
+            coreSize: 70,
+            glowSize: 140,
+            raySize: 150,
+            colorCore: 'rgba(240, 248, 255, 0.95)',
+            colorGlow: 'rgba(176, 196, 222, 0.8)',
+            colorRay: 'rgba(147, 168, 211, 0.5)',
+        });
+    };
+
     return (
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
             {/* Enhanced Stars with varied twinkling */}
@@ -100,6 +116,59 @@ export const StarBackground = () => {
                     }}
                 />
             ))}
+
+            {/* Moon object */}
+            {moon && (
+                <div style={{
+                        '--moon-core-size': `${moon.coreSize}px`,
+                        '--moon-glow-size': `${moon.glowSize}px`,
+                        '--moon-ray-size': `${moon.raySize}px`
+                    }}>
+                    {/* Moon Ray Effect (Largest, most diffuse) */}
+                    <div
+                        className="absolute rounded-full"
+                        style={{
+                            width: 'var(--moon-ray-size)',
+                            height: 'var(--moon-ray-size)',
+                            top: `calc(${moon.top} - (var(--moon-ray-size) - var(--moon-core-size)) / 2 + var(--moon-core-size)/2 - var(--moon-ray-size)/2)`,
+                            left: `calc(${moon.left} - (var(--moon-ray-size) - var(--moon-core-size)) / 2 + var(--moon-core-size)/2 - var(--moon-ray-size)/2)`,
+                            background: `radial-gradient(ellipse at center, ${moon.colorRay} 0%, transparent 70%)`,
+                            filter: `blur(30px)`,
+                            opacity: 0.6,
+                        }}
+                    />
+                    {/* Moon Main Glow (Mid layer) */}
+                    <div
+                        className="absolute rounded-full"
+                        style={{
+                            width: 'var(--moon-glow-size)',
+                            height: 'var(--moon-glow-size)',
+                            top: `calc(${moon.top} - (var(--moon-glow-size) - var(--moon-core-size)) / 2 + var(--moon-core-size)/2 - var(--moon-glow-size)/2)`,
+                            left: `calc(${moon.left} - (var(--moon-glow-size) - var(--moon-core-size)) / 2 + var(--moon-core-size)/2 - var(--moon-glow-size)/2)`,
+                            background: `radial-gradient(ellipse at center, ${moon.colorGlow} 10%, transparent 60%)`,
+                            filter: `blur(15px)`,
+                            opacity: 0.8,
+                        }}
+                    />
+                    {/* Moon Bright Core (Smallest, brightest) */}
+                    <div
+                        className="absolute rounded-full"
+                        style={{
+                            width: 'var(--moon-core-size)',
+                            height: 'var(--moon-core-size)',
+                            top: moon.top,
+                            left: moon.left,
+                            background: moon.colorCore,
+                            boxShadow: `
+                                0 0 15px 4px ${moon.colorCore.replace('0.95)', '0.7)')}, 
+                                0 0 30px 8px ${moon.colorGlow.replace('0.8)', '0.5)')},
+                                0 0 45px 15px ${moon.colorRay.replace('0.5)', '0.3)')}
+                            `,
+                            opacity: 1,
+                        }}
+                    />
+                </div>
+            )}
 
             {/* Beautiful Enhanced Meteors */}
             {meteors.map((meteor) => (

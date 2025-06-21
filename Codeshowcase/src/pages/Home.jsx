@@ -3,6 +3,7 @@ import { StarBackground } from "@/components/StarBackground";
 import { CosmicLightBackground } from "../components/CosmixLightBackground";
 import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
+import { HeroSection } from "../components/HeroSection";
 
 export const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,7 +36,9 @@ export const Home = () => {
             {/* Navbar */}
             <Navbar/>
             {/* Main Content */}
-            
+            <main>
+              <HeroSection/>
+            </main>
             {/* Footer */}
         </div>
     );
