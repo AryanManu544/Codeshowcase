@@ -10,37 +10,32 @@
 
   --color-card: hsl(var(--card));
 
-  --animate=float: float 6s ease-in-out infinite;
-  --animate=pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate=fade-in: fade-in 0.7s ease-out forwards;
-  --animate=fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
-  --animate=fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
-  --animate=fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
-  --animate=fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  /* Animation Aliases for Tailwind */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
+  --animate-meteor-enhanced: meteor-enhanced 6s linear infinite;
+  --animate-meteor-beautiful: meteor-beautiful 8s linear infinite;
+
+  /* Keyframe Animations */
 
   /* Float animation */
   @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
   }
 
   /* Pulse-subtle animation */
   @keyframes pulse-subtle {
-
-    0%,
-    100% {
+    0%, 100% {
       transform: scale(1);
       opacity: 1;
     }
-
     50% {
       transform: scale(1.05);
       opacity: 0.9;
@@ -49,28 +44,279 @@
 
   /* Fade-in animation */
   @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    to {
-      opacity: 1;
+  /* Enhanced Star Twinkling Animations */
+  @keyframes star-twinkle {
+    0%, 100% {
+      opacity: var(--star-base-opacity, 0.4);
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.5);
+      transform: scale(1.05);
+    }
+    75% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.25);
+      transform: scale(1);
     }
   }
 
-  /* Meteor animation */
+  @keyframes star-twinkle-bright {
+    0%, 100% {
+      opacity: var(--star-base-opacity, 0.4);
+      transform: scale(0.8);
+      filter: brightness(1);
+    }
+    25% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.3);
+      transform: scale(1.1);
+      filter: brightness(1.5);
+    }
+    50% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.6);
+      transform: scale(1.3);
+      filter: brightness(2);
+    }
+    75% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.4);
+      transform: scale(1.15);
+      filter: brightness(1.7);
+    }
+  }
+
+  @keyframes star-twinkle-subtle {
+    0%, 100% {
+      opacity: var(--star-base-opacity, 0.4);
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: calc(var(--star-base-opacity, 0.4) + 0.3);
+      transform: scale(1.08);
+    }
+  }
+
+  /* StarBackground specific animations */
+  @keyframes twinkle-bright {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(0.8);
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.4);
+      filter: brightness(2.5);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
+      box-shadow: 0 0 10px var(--star-glow-color, #FFFFFF);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      box-shadow: 0 0 20px var(--star-glow-color, #FFFFFF), 0 0 30px var(--star-glow-color, #FFFFFF);
+    }
+  }
+
+  /* Enhanced Meteor Animations */
   @keyframes meteor {
     0% {
-      transform: rotate(215deg) translateX(0) ;
+      transform: rotate(215deg) translateX(0);
       opacity: 1;
     }
-
-    70% {
-      opacity: 1;
-    }
-
+    70% { opacity: 1; }
     100% {
       transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes meteor-enhanced {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-600px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes meteor-beautiful {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      filter: blur(2px);
+    }
+    15% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    85% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    100% {
+      transform: rotate(215deg) translateX(-700px);
+      opacity: 0;
+      filter: blur(3px);
+    }
+  }
+
+  /* Meteor Sparkle/Particle Animations */
+  @keyframes meteor-sparkle-1 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.5;
+    }
+    20% {
+      opacity: 1;
+      scale: 1;
+    }
+    80% {
+      opacity: 1;
+      scale: 1.2;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+      scale: 0.3;
+    }
+  }
+
+  @keyframes meteor-sparkle-2 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.3;
+    }
+    25% {
+      opacity: 0.8;
+      scale: 1;
+    }
+    75% {
+      opacity: 0.8;
+      scale: 1.1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-450px);
+      opacity: 0;
+      scale: 0.2;
+    }
+  }
+
+  @keyframes meteor-sparkle-3 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.8;
+    }
+    30% {
+      opacity: 1;
+      scale: 1.2;
+    }
+    70% {
+      opacity: 1;
+      scale: 1.3;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-400px);
+      opacity: 0;
+      scale: 0.4;
+    }
+  }
+
+  @keyframes meteor-particle-1 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.6;
+    }
+    20% {
+      opacity: 1;
+      scale: 1.1;
+    }
+    80% {
+      opacity: 0.9;
+      scale: 1.2;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-480px);
+      opacity: 0;
+      scale: 0.3;
+    }
+  }
+
+  @keyframes meteor-particle-2 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.4;
+    }
+    25% {
+      opacity: 0.8;
+      scale: 1;
+    }
+    75% {
+      opacity: 0.7;
+      scale: 1.1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-420px);
+      opacity: 0;
+      scale: 0.2;
+    }
+  }
+
+  @keyframes meteor-particle-3 {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 0;
+      scale: 0.7;
+    }
+    30% {
+      opacity: 1;
+      scale: 1.3;
+    }
+    70% {
+      opacity: 1;
+      scale: 1.4;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-380px);
+      opacity: 0;
+      scale: 0.4;
+    }
+  }
+
+  /* Comet animation for CosmicLightBackground */
+  @keyframes comet-fly {
+    0% {
+      transform: translateX(0vw) translateY(0vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-150vw) translateY(35vh);
       opacity: 0;
     }
   }
@@ -80,24 +326,18 @@
   :root {
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
-
     --card: 0 0% 100%;
-
     --primary: 250 47% 60%;
     --primary-foreground: 210 40% 98%;
-
     --border: 214 32% 91%;
   }
 
   .dark {
     --background: 222 47% 4%;
     --foreground: 213 31% 91%;
-
     --card: 222 47% 8%;
-
     --primary: 250 65% 65%;
     --primary-foreground: 213 31% 91%;
-
     --border: 217 33% 20%;
   }
 
@@ -113,61 +353,160 @@
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-
-  @media (width >=640px) {
-    max-width: 640px;
-  }
-
-  @media (width >=768px) {
-    max-width: 768px;
-  }
-
-  @media (width >=1024px) {
-    max-width: 1024px;
-  }
-
-  @media (width >=1280px) {
-    max-width: 1280px;
-  }
-
-  @media (width >=1400px) {
-    max-width: 1400px;
+  html, body {
+    overflow-x: hidden;
   }
 }
 
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-}
+@layer utilities {
+  .container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+    @media (width >=640px) { max-width: 640px; }
+    @media (width >=768px) { max-width: 768px; }
+    @media (width >=1024px) { max-width: 1024px; }
+    @media (width >=1280px) { max-width: 1280px; }
+    @media (width >=1400px) { max-width: 1400px; }
+  }
 
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
-}
+  .text-glow {
+    @apply relative;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  }
 
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
-}
+  .card-hover {
+    @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+  }
 
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
-}
+  .gradient-border {
+    @apply relative rounded-md;
+    background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
 
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
-}
+  .cosmic-button {
+    @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
+  }
 
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  /* Enhanced styling for StarBackground.jsx elements */
+  .star {
+    @apply absolute rounded-full;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .meteor {
+    @apply absolute rounded-full;
+    background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 40%, #87CEEB 70%, transparent 100%);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Enhanced meteor styling */
+  .meteor-enhanced {
+    @apply absolute rounded-full;
+    border-radius: 50px;
+    position: relative;
+    transform-origin: left center;
+  }
+
+  /* Animation Application Utilities */
+
+  /* For CosmicLightBackground.jsx stars */
+  .animate-star-twinkle {
+    animation-name: star-twinkle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-star-twinkle-bright {
+    animation-name: star-twinkle-bright;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-star-twinkle-subtle {
+    animation-name: star-twinkle-subtle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  /* For StarBackground.jsx stars */
+  .animate-twinkle-bright {
+    animation-name: twinkle-bright;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-pulse-glow {
+    animation-name: pulse-glow;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  /* For enhanced meteors */
+  .animate-meteor-enhanced {
+    animation-name: meteor-enhanced;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-beautiful {
+    animation-name: meteor-beautiful;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  /* For meteor sparkles and particles */
+  .animate-meteor-sparkle-1 {
+    animation-name: meteor-sparkle-1;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-sparkle-2 {
+    animation-name: meteor-sparkle-2;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-sparkle-3 {
+    animation-name: meteor-sparkle-3;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-particle-1 {
+    animation-name: meteor-particle-1;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-particle-2 {
+    animation-name: meteor-particle-2;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-meteor-particle-3 {
+    animation-name: meteor-particle-3;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  /* For CosmicLightBackground.jsx comets */
+  .animate-comet {
+    animation-name: comet-fly;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  /* Theme Toggle Icon Styles */
+  .theme-icon {
+    @apply w-6 h-6 cursor-pointer transition-transform duration-300 hover:scale-110;
+  }
 }
 
 #root {
