@@ -6,7 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
 import { Aboutme } from "../components/Aboutme";
 import { Skills } from "../components/SkillsSection";
-
+import { ProjectsSection } from "../components/ProjectsSection";
 export const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -27,23 +27,24 @@ export const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-    return (
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">  
-            {/* Theme Toggle */}
-            <ThemeToggle/>
-            
-            {/* Background Effects - Conditional based on theme */}
-            {isDarkMode ? <StarBackground/> : <CosmicLightBackground/>}
-            
-            {/* Navbar */}
-            <Navbar/>
-            {/* Main Content */}
-            <main>
-            <HeroSection/>
-            <Aboutme/>
-            <Skills/>
-            </main>
-            {/* Footer */}
-        </div>
-    );
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Theme Toggle */}
+      <ThemeToggle />
+
+      {/* Background Effects - Conditional based on theme */}
+      {isDarkMode ? <StarBackground /> : <CosmicLightBackground />}
+
+      {/* Navbar */}
+      <Navbar />
+      {/* Main Content */}
+      <main>
+        <HeroSection />
+        <Aboutme />
+        <Skills />
+        <ProjectsSection />
+      </main>
+      {/* Footer */}
+    </div>
+  );
 };
