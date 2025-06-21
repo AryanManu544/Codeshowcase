@@ -7,6 +7,7 @@ import { HeroSection } from "../components/HeroSection";
 import { Aboutme } from "../components/Aboutme";
 import { Skills } from "../components/SkillsSection";
 import { ProjectsSection } from "../components/ProjectsSection";
+import { Footer } from "../components/Footer";
 export const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -45,6 +46,7 @@ export const Home = () => {
         <ProjectsSection />
       </main>
       {/* Footer */}
+      <Footer />
     </div>
   );
 };
