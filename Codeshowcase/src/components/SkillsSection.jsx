@@ -12,6 +12,7 @@ const skills = [
     { name: "Node.js", category: "Backend" },
     { name: "Express", category: "Backend" },
     { name: "MongoDB", category: "Backend" },
+    { name: "Flask", category: "Backend"},
 
     // Tools
     { name: "Git/GitHub", category: "Tools" },
@@ -24,8 +25,11 @@ const skills = [
     { name: "Pandas", category: "AI" },
     { name: "Matplotlib", category: "AI" },
     { name: "Seaborn", category: "AI" },
-    { name: "Linear Regression", category: "AI" },
+    { name: "Regression Models", category: "AI" },
     { name: "Classification", category: "AI" },
+    { name: "KNN", category: "AI" },
+    {name: "gradient boost(GBM) and XGboost", category: "AI"},
+    {name: "CNN and its architectures(Xception, ResNet, EfficientNet)"}
 ];
 
 const categories = ["All", "Frontend", "Backend", "Tools", "AI"];

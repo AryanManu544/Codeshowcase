@@ -18,6 +18,15 @@ const projects = [
     tags: ["React", "Tailwindcss", "SaSS", "Express.js", "Node.js", "MongoDB"],
     demoUrl: "https://vibe-sync-glqp.vercel.app/",
     githubUrl: "https://github.com/AryanManu544/VibeSync"
+  },
+  {
+    id: 3,
+    title: "Nutrisnap",
+    description: "Upload Image of selected food items and watch the AI Predict the food and give its nutrition values",
+    image: "/projects/Nutrisnap.png",
+    tags: ["React", "TensorFlow", "Pillow", "Flask", "Docker"],
+    demoUrl: "https://nutrisnap-zeta.vercel.app/",
+    githubUrl: "https://github.com/AryanManu544/NutriSnap"
   }
 ]
 
