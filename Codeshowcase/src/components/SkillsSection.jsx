@@ -29,7 +29,7 @@ const skills = [
     { name: "Classification", category: "AI" },
     { name: "KNN", category: "AI" },
     {name: "gradient boost(GBM) and XGboost", category: "AI"},
-    {name: "CNN and its architectures(Xception, ResNet, EfficientNet)"}
+    {name: "CNN and its architectures(Xception, ResNet, EfficientNet)", category: "AI"}
 ];
 
 const categories = ["All", "Frontend", "Backend", "Tools", "AI"];
